@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+	<h1>AngularJS</h1>
+	<br>
+	<button ng-click="ctrl.changeLabel()">Change Label</button>
+	<br>
+	<div class="boxList">
+		<ul>
+			<li ng-repeat="note in ctrl.notes">
+				<span class="label" ng-bind="note.label"></span>,
+			</li>
+		</ul>
+	</div>
+
+	<div class="boxList">
+		<ul>
+			<li ng-repeat="note in ctrl.notes">
+				<span class="label" ng-bind="::note.label"></span>
+			</li>
+		</ul>
+	</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+<script type="text/javascript">
+	angular.module('notesApp', [])
+		.controller('MainCtrl', [function() {
+			var self = this;
+			
+			self.notes = [
+				{id: 1, label: 'First note', done: false},
+				{id: 2, label: 'Secound note', done: false},
+				{id: 3, label: 'Third note', done: true},
+				{id: 4, label: 'Fourth  note', done: false}
+			];
+			
+			self.changeLabel = function(argument) {
+				self.notes[0].label = 'First note changed';
+			}
+		}]);
+</script>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+	<h1>{{ctrl.message}} AngularJS</h1>
+	<br>
+	<button ng-click="ctrl.changeMsg()">Change message</button>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+<script type="text/javascript">
+	angular.module('notesApp', [])
+		.controller('MainCtrl', [function() {
+			var self = this;
+			self.message = 'Hello, ';
+			self.changeMsg = function() {
+				self.message = 'Goodbye, ';
+			};
+		}]);
+</script>
+</html>
