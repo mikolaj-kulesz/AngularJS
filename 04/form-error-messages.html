@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+
+	<form ng-submit="ctrl.submit()" name="myForm">
+		<input type="text" 
+			   name="uname" 
+			   ng-model="ctrl.user.username"
+			   required
+			   ng-minlength="4"
+		>
+		<span ng-show="myForm.uname.$error.required">
+			this field is required
+		</span>
+		<span ng-show="myForm.uname.$error.minlength">
+			minlength for this field is 4 signs
+		</span>
+		<br>
+		<input type="password" 
+			   ng-model="ctrl.user.password"
+			   required
+			   name="upwd"
+		>
+		<span ng-show="myForm.upwd.$error.required">
+			this field is required
+		</span>
+		<br>
+		<input type="submit" 
+			   value="Send"
+			   ng-disabled="myForm.$invalid"
+		>
+	</form>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+<script type="text/javascript">
+angular.module('notesApp', [])
+	.controller('MainCtrl', [function() {
+		var self = this;
+
+		self.submit = function(){
+			console.log('You clicked btn to Submit this data: ' + self.user);
+		}
+	}]);
+</script>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+
+	<form ng-submit="ctrl.submit1()" name="simpleForm">
+		<input type="email" 
+			   name="uname" 
+			   ng-model="ctrl.user1.username"
+			   required
+			   ng-minlength="6"
+		>
+		<div ng-messages="simpleForm.uname.$error"
+			 ng-messages-include="error-messages">
+		</div>
+		<br>
+		<input type="password" 
+			   name="upwd"
+			   ng-model="ctrl.user1.password"
+			   required
+		>
+		<div ng-messages="simpleForm.upwd.$error"
+			 ng-messages-include="error-messages">
+		</div>
+		<br>
+		<input type="submit" 
+			   value="Send"
+			   ng-disabled="simpleForm.$invalid"
+		>
+	</form>
+
+	<form ng-submit="ctrl.submit2()" name="overriddenForm">
+		<input type="email" 
+			   name="uname" 
+			   ng-model="ctrl.user2.username"
+			   required
+			   ng-minlength="6"
+		>
+		<div ng-messages="overriddenForm.uname.$error"
+			 ng-messages-include="error-messages">
+			 <div ng-message="required">Wpisz nazwę użytkownika</div>
+		</div>
+		<br>
+		<input type="password" 
+			   name="upwd"
+			   ng-model="ctrl.user2.password"
+			   required
+		>
+		<div ng-messages="overriddenForm.upwd.$error"
+			 ng-messages-include="error-messages">
+			 <div ng-message="required">Wpisz hasło</div>
+		</div>
+		<br>
+		<input type="submit" 
+			   value="Send"
+			   ng-disabled="overriddenForm.$invalid"
+		>
+	</form>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-messages.js"></script>
+<script type="text/ng-template" id="error-messages">
+  <div ng-message="required">To pole jest obowiązkowe</div>
+  <div ng-message="minlength">Wpisano za mało znaków</div>
+  <div ng-message="email">Podaj prawidłowy adres e-mail</div>
+</script>
+
+<script type="text/javascript">
+  angular.module('notesApp', ['ngMessages'])
+    .controller('MainCtrl', [function() {
+      var self = this;
+      self.submit1 = function() {
+        console.log('Użytkownik zatwierdził formularz z danymi ', self.user1);
+      };
+      self.submit2 = function() {
+        console.log('Użytkownik zatwierdził formularz z danymi', self.user2);
+      };
+    }]);
+</script>
+
+</html>

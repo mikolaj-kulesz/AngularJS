@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+
+	<form ng-submit="ctrl.submit1()">
+		<input type="text" ng-model="ctrl.username">
+		<input type="password" ng-model="ctrl.password">
+		<input type="submit" value="Send">
+	</form>
+
+	<form ng-submit="ctrl.submit2()">
+		<input type="text" ng-model="ctrl.user.username">
+		<input type="password" ng-model="ctrl.user.password">
+		<input type="submit" value="Send">
+	</form>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+<script type="text/javascript">
+angular.module('notesApp', [])
+	.controller('MainCtrl', [function() {
+		var self = this;
+
+		self.submit1 = function(){
+
+			var user = {
+				username: self.user,
+				password: self.password
+			}
+
+			console.log('You clicked btn to Submit this data: ' + user);
+		}
+
+		self.submit2 = function(){
+
+			console.log('You clicked btn to Submit this data: ' + self.user);
+		}
+	}]);
+</script>
+</html>
