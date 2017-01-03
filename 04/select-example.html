@@ -1,0 +1,49 @@
+<!-- Plik: r04/select-example.html -->
+<html ng-app="notesApp">
+<head>
+  <meta charset="utf-8">
+  <title>Notes App</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+
+<div>
+  <select ng-model="ctrl.selectedCountryId"
+          ng-options="c.id as c.label for c in ctrl.countries">
+  </select>
+  Identyfikator wybranego kraju: {{ctrl.selectedCountryId}}
+</div>
+
+<div>
+  <select ng-model="ctrl.selectedCountryLabel"
+          ng-options="c.label as c.id for c in ctrl.countries">
+  </select>
+  Identyfikator wybranego kraju: {{ctrl.selectedCountryLabel}}
+</div>
+
+<div>
+  <select ng-model="ctrl.selectedCountry"
+          ng-options="c.label for c in ctrl.countries track by c.id">
+  </select>
+
+  Wybrany kraj: {{ctrl.selectedCountry}}
+</div>
+
+<script
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js">
+</script>
+<script type="text/javascript">
+  angular.module('notesApp', [])
+    .controller('MainCtrl', [function() {
+      this.countries = [
+        {label: 'USA', id: 1},
+        {label: 'Indie', id: 2},
+        {label: 'Inny', id: 3}
+      ];
+      var id = 1;
+      this.selectedCountry = this.countries[id];
+      this.selectedCountryId = this.countries[id].id;
+      this.selectedCountryLabel = this.countries[id].label;
+    }]);
+</script>
+</body>
+</html>

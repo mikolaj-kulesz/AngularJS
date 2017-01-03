@@ -1,0 +1,67 @@
+<!-- Plik: r04/nested-forms.html -->
+<html ng-app>
+<head>
+  <meta charset="utf-8">
+  <title>Notes App</title>
+</head>
+
+<body>
+  <form novalidate name="myForm">
+    <div>
+      <input type="text"
+             class="username"
+             name="uname"
+             ng-model="ctrl.user.username"
+             required
+             placeholder="Nazwa użytkownika"
+             ng-minlength="4" />
+      <input type="email"
+             class="mail"
+             name="mail"
+             ng-model="ctrl.user.mail"
+             placeholder="your e-mail"
+             required />
+      <input type="password"
+             class="password"
+             name="pwd"
+             ng-model="ctrl.user.password"
+             placeholder="Hasło"
+             required />
+    </div>
+
+    <ng-form name="profile">
+      <input type="text"
+             name="firstName"
+             ng-model="ctrl.user.profile.firstName"
+             placeholder="Imię"
+             required>
+      <input type="text"
+             name="middleName"
+             placeholder="Drugie imię"
+             ng-model="ctrl.user.profile.middleName">
+      <input type="text"
+             name="lastName"
+             placeholder="Nazwisko"
+             ng-model="ctrl.user.profile.lastName"
+             required>
+      <input type="date"
+             name="dob"
+             placeholder="Data urodzenia"
+             ng-model="ctrl.user.profile.dob">
+    </ng-form>
+
+    <span ng-show="myForm.profile.$invalid">
+      Wypełnij pola formularza
+    </span>
+
+    <input type="submit"
+           value="Wyślij"
+           ng-disabled="myForm.$invalid"/>
+  </form>
+
+<script
+    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js">
+</script>
+</body>
+
+</html>
