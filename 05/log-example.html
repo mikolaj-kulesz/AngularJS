@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mikkoApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="MainCtrl as mctrl">
+	<h1>Hello!</h1>
+	<button ng-click="mctrl.logSth();">Log something</button>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+<script>
+angular.module('mikkoApp', [])
+	.controller('MainCtrl', ['$log', function($log){
+		var self = this;
+		self.logSth = function() {
+			$log.log('Log something!');
+		}
+	}]);
+</script>
+</html>
+
+<!--
+	IMPORTANT:
+
+//injection order:
+myModule.controller("MainCtrl", ["$log", "$window", function($l, $w){}"]);
+
+$log -> $l;
+$window -> $w;
+
+
+//most common 
+
+$window
+
+$location
+ abs.Url
+ ulr
+ path
+ search
+
+$http

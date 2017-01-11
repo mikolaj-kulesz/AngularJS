@@ -1,0 +1,40 @@
+<!-- Plik: r05/item-service-using-provider/index.html -->
+<html ng-app="notesApp">
+<body ng-controller="MainCtrl as mainCtrl">
+  <h1>Witajcie, kontrolery!</h1>
+  <button ng-click="mainCtrl.open('first')">Otwórz pierwszą kartę</button>
+  <button ng-click="mainCtrl.open('second')">Otwórz drugą kartę</button>
+  <div ng-switch on="mainCtrl.tab">
+
+    <div ng-switch-when="first">
+      <div ng-controller="SubCtrl as ctrl">
+        <h3>Pierwsza karta</h3>
+        <ul>
+          <li ng-repeat="item in ctrl.list()">
+            <span ng-bind="item.label"></span>
+          </li>
+        </ul>
+
+        <button ng-click="ctrl.add()">Dodaj więcej elementów</button>
+      </div>
+
+    </div>
+    <div ng-switch-when="second">
+      <div ng-controller="SubCtrl as ctrl">
+        <h3>Druga karta</h3>
+        <ul>
+          <li ng-repeat="item in ctrl.list()">
+            <span ng-bind="item.label"></span>
+          </li>
+        </ul>
+
+        <button ng-click="ctrl.add()">Dodaj więcej elementów</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
