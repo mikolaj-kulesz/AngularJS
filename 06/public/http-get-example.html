@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple ajax get</title>
+
+  <style>
+    .item {
+      padding: 10px;
+    }
+
+    ul li div {
+      display: inline-block;
+    }
+  </style>
+
+</head>
+<body>
+
+  <h1>Hello, 'ajax get'!</h1>
+  <div ng-controller="MainCtrl as mainCtrl">
+  <ul ng-repeat="todo in mainCtrl.items">
+    <li class="item">
+      <div class="" ng-bind="todo.label"></div>
+      <div class="">
+        <span>, by - </span>
+        <span ng-bind="todo.author"></span></div>
+    </li>  
+  </ul>
+  </div>
+
+<script
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js">
+</script>
+<script>
+angular.module('notesApp',[])
+  .controller('MainCtrl', ['$http', function($http){
+    var self = this;
+    self.items = [];
+
+    $http.get('api/note').then( function(response){
+      self.items = response.data;
+      console.log(response.config);
+    }, function(errResponse){
+      console.log('Error - get notes');
+    });
+
+  }]);
+
+</script>
+</body>
+</html>
