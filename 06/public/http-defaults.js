@@ -9,6 +9,7 @@ angular.module('notesApp', [])
       $http.post('/api/login', self.user).then(
         function(resp) {
          self.message = resp.data.msg;
+         console.log(resp.data);
       });
     };
   }])
