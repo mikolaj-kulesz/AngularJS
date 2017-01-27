@@ -1,4 +1,3 @@
-// Plik: r06/public/logging-interceptor.js
 angular.module('notesApp', [])
   .controller('MainCtrl', ['$http', function($http) {
     var self = this;
