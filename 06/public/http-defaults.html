@@ -9,19 +9,20 @@
 <h1>Witajcie, domyślne ustawienia HTTP!</h1>
 <div>
   <div ng-bind="loginCtrl.message"></div>
+
   <form name="loginForm"
         ng-submit="loginCtrl.login()">
     <input type="text"
-           placeholder="Nazwa użytkownika"
+           placeholder="Your login"
            ng-model="loginCtrl.user.username"
            required>
-    <input type="password"
-           placeholder="Hasło"
+    <input type="text"
+           placeholder="Your password"
            ng-model="loginCtrl.user.password"
            required>
     <input type="submit"
-           value="Zaloguj"
-           ng-disabled="loginForm.$invalid">
+           value="Log in"
+           ng-disable="loginForm.$invalid">
   </form>
 </div>
 
