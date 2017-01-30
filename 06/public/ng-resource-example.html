@@ -1,4 +1,3 @@
-<!-- Plik: r06/public/ng-resource-example.html -->
 <html ng-app="notesApp">
 
 <head>
@@ -55,8 +54,8 @@ angular.module('notesApp',['ngResource'])
     fetchTodos();
 
     self.done = function(note){
-      Notes.markAsDone(note, function(notes){
-        self.items = notes;
+      Notes.markAsDone(note, function(markAsDoneNotes){
+        self.items = markAsDoneNotes;
       });
     };
 
