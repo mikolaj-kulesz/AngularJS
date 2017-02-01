@@ -1,0 +1,69 @@
+<!-- Plik: r08/filter-number-string.html -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Filtry w akcji</title>
+</head>
+<body ng-app="filtersApp">
+
+<ul ng-controller="FilterCtrl as ctrl">
+  <li>
+    Ilość - {{ctrl.amount}}
+  </li>
+  <li>
+    Ilość - domyślna waluta: {{ctrl.amount | currency}}
+  </li>
+  <li>
+    Ilość - waluta funt szterling: {{ctrl.amount | currency:'&#163'}}
+  </li>
+
+  <li>
+    Ilość - liczba: {{ctrl.amount | number}}
+  </li>
+  <li>
+    Ilość - nr z czterema miejscami po przecinku: {{ctrl.amount | number:4}}
+  </li>
+
+  <li>
+    Nazwisko bez filtrów: {{ctrl.name}}
+  </li>
+  <li>
+    Nazwisko - z filtrem lowercase: {{ctrl.name | lowercase}}
+  </li>
+  <li>
+    Nazwisko - z filtrem uppercase: {{ctrl.name | uppercase}}
+  </li>
+
+  <li>
+    Filtr JSON: {{ctrl.obj | json}}
+  </li>
+
+  <li>
+    Znacznik czasu: {{ctrl.startTime}}
+  </li>
+  <li>
+    Domyślny filtr daty: {{ctrl.startTime | date}}
+  </li>
+  <li>
+    Filtr daty medium: {{ctrl.startTime | date:'medium'}}
+  </li>
+  <li>
+    Filtr daty zdefiniowany przez użytkownika: {{ctrl.startTime | date:'dd.MM.yyyy'}}
+  </li>
+</ul>
+
+<script
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js">
+</script>
+
+<script type="text/javascript">
+  angular.module('filtersApp', [])
+    .controller('FilterCtrl', [function() {
+      this.amount = 1024;
+      this.name = 'Shyam Seshadri';
+      this.obj = {test: 'value', num: 123};
+      this.startTime = new Date().getTime();
+    }]);
+</script>
+</body>
+</html>

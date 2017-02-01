@@ -1,0 +1,63 @@
+<!-- Plik: r08/custom-filters.html -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Własne filtry użytkownika w akcji</title>
+</head>
+<body ng-app="filtersApp">
+
+<div ng-controller="FilterCtrl as ctrl">
+  <div>
+    Początek (znacznik czasu): {{ctrl.startTime}}
+  </div>
+  <div>
+    Początek (DateTime): {{ctrl.startTime | date:'dd.MM.yyyy, HH:mm:ss'}}
+  </div>
+  <div>
+    Początek (własny filtr): {{ctrl.startTime | timeAgo}}
+  </div>
+
+  <div>
+    someTimeAgo : {{ctrl.someTimeAgo | date:'d.M.yy, H:m:s'}}
+  </div>
+  <div>
+    someTimeAgo (własny filtr): {{ctrl.someTimeAgo | timeAgo}}
+  </div>
+</div>
+
+<script
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js">
+</script>
+
+<script type="text/javascript">
+  angular.module('filtersApp', [])
+    .controller('FilterCtrl', [function() {
+      this.startTime = new Date().getTime();
+      this.someTimeAgo = new Date().getTime() -
+          (1000 * 60 * 60 * 4);
+    }])
+    .filter('timeAgo', [function() {
+      var ONE_MINUTE = 1000 * 60;
+      var ONE_HOUR = ONE_MINUTE * 60;
+      var ONE_DAY = ONE_HOUR * 24;
+      var ONE_MONTH = ONE_DAY * 30;
+
+      return function(ts) {
+        var currentTime = new Date().getTime();
+        var diff = currentTime - ts;
+        if (diff < ONE_MINUTE) {
+          return 'sekund temu';
+        } else if (diff < ONE_HOUR) {
+          return 'minut temu';
+        } else if (diff < ONE_DAY) {
+          return 'godzin temu';
+        } else if (diff < ONE_MONTH) {
+          return 'dni temu';
+        } else {
+          return 'miesięcy temu';
+        }
+      };
+    }]);
+</script>
+</body>
+</html>

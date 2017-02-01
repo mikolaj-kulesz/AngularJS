@@ -1,0 +1,50 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Filters in action</title>
+</head>
+<body ng-app="filtersApp">
+
+<div ng-controller="FilterCtrl as ctrl">
+  <div>
+    Ammount as a numver: <strong>{{ ctrl.amount | number:2 }}</strong>
+  </div>
+
+  <div>
+    Sum as a currency: <strong>{{ ctrl.totalCost | currency }}</strong>
+  </div>
+
+  <div>
+    Sum as a PLN currency: <strong>{{ ctrl.totalCost | currency: 'PLN ' }}</strong>
+  </div>
+
+  <div>
+    Surname UPPERCASE: <strong>{{ ctrl.name | uppercase }}</strong>
+  </div>
+
+  <div>
+    Surname lowercase: <strong>{{ ctrl.name | lowercase }}</strong>
+  </div>
+
+  <div>
+    Start time: <strong>{{ ctrl.startTime | date:'dd.MM.yyyy, HH:mm:ss' }}</strong>
+  </div>
+</div>
+
+<script
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js">
+</script>
+
+<script type="text/javascript">
+    angular.module('filtersApp',[])
+      .controller('FilterCtrl', [function(){
+        self = this;
+        self.amount = 1024;
+        self.totalCost = 4906;
+        self.name = 'Shyam Seshadri';
+        self.startTime = new Date().getTime();
+      }]);
+
+</script>
+</body>
+</html>
