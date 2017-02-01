@@ -1,34 +1,59 @@
-<!-- Plik: r08/filter-arrays.html -->
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Filtry w akcji</title>
+  <title>Filters in action</title>
 </head>
 <body ng-app="filtersApp">
 
 <div ng-controller="FilterCtrl as ctrl">
 
-  <button ng-click="ctrl.currentFilter = 'string'">
-    Filtr z opcją string
-  </button>
-  <button ng-click="ctrl.currentFilter = 'object'">
-    Filtr z opcją object
-  </button>
-  <button ng-click="ctrl.currentFilter = 'function'">
-    Filtr z opcją function
-  </button>
-  Filtr tekstu
-  <input type="text"
-         ng-model="ctrl.filterOptions['string']">
-  Pokaż tylko zrobione
-  <input type="checkbox"
-         ng-model="ctrl.filterOptions['object'].done">
+  <div>
+    <button ng-click="ctrl.currentFilter = 'string'">
+      Filtr z opcją string
+    </button>
+    <button ng-click="ctrl.currentFilter = 'object'">
+      Filtr z opcją object
+    </button>
+    <button ng-click="ctrl.currentFilter = 'function'">
+      Filtr z opcją function
+    </button>
+    Filtr tekstu
+    <input type="text"
+           ng-model="ctrl.filterOptions['string']">
+    Pokaż tylko zrobione
+    <input type="checkbox"
+           ng-model="ctrl.filterOptions['object'].done">
+  </div>
+  <div>
+    <button ng-click="ctrl.sortOrder = ['+label']">
+      Sortowanie po label +
+    </button>
+    <button ng-click="ctrl.sortOrder = ['-label']">
+      Sortowanie po label -
+    </button>
+    <button ng-click="ctrl.sortOrder = ['+type']">
+      Sortowanie po type +
+    </button>
+    <button ng-click="ctrl.sortOrder = ['-type']">
+      Sortowanie po type -
+    </button>
+    <button ng-click="ctrl.sortOrder = ['+done']">
+      Sortowanie po done +
+    </button>
+    <button ng-click="ctrl.sortOrder = ['-done']">
+      Sortowanie po done -
+    </button>
+    <input type="checkbox"
+           ng-model="ctrl.user.limit" ng-true-value="5" ng-false-value="'{{ctrl.notes.length}}'">
+    {{ctrl.user.limit}}
+  </div>
   <ul>
     <li ng-repeat="note in ctrl.notes |
                    filter:ctrl.filterOptions[ctrl.currentFilter] |
-                   orderBy:ctrl.sortOrder |
-                   limitTo:5">
-       {{note.label}} - {{note.type}} - {{note.done}}
+                   orderBy: ctrl.sortOrder | 
+                   limitTo: ctrl.user.limit">
+      {{note.label}} -  {{note.type}} -  {{note.done}}
+      
     </li>
   </ul>
 </div>
@@ -42,6 +67,7 @@
     .controller('FilterCtrl', [function() {
       this.notes = [
         {label: 'FC Todo', type: 'chore', done: false},
+        {label: 'FC Todo', type: 'chore2', done: true},
         {label: 'FT Todo', type: 'task', done: false},
         {label: 'FF Todo', type: 'fun', done: true},
         {label: 'SC Todo', type: 'chore', done: true},
@@ -51,13 +77,17 @@
         {label: 'TT Todo', type: 'task', done: false},
         {label: 'TF Todo', type: 'fun', done: false}
       ];
-      this.sortOrder = ['+type', '-label'];
+      this.sortOrder = ['+label','-done'];
+
+      this.user = {
+        limit : this.notes.length,
+      };
 
       this.filterOptions = {
         "string": '',
         "object": {done: false, label: 'C'},
         "function": function(note) {
-          return note.type === 'task' && note.done === false;
+          return note.type === 'task' && note.done === true;
         }
       };
 

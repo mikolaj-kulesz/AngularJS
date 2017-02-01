@@ -1,54 +1,59 @@
-<!-- Plik: r08/filter-number-string.html -->
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Filtry w akcji</title>
+  <title>Filters in action</title>
 </head>
 <body ng-app="filtersApp">
 
 <ul ng-controller="FilterCtrl as ctrl">
   <li>
-    Ilość - {{ctrl.amount}}
+    Amount without filters - {{ctrl.amount}}
   </li>
   <li>
-    Ilość - domyślna waluta: {{ctrl.amount | currency}}
+    Amount - default currency: {{ctrl.amount | currency}}
   </li>
   <li>
-    Ilość - waluta funt szterling: {{ctrl.amount | currency:'&#163'}}
-  </li>
-
-  <li>
-    Ilość - liczba: {{ctrl.amount | number}}
-  </li>
-  <li>
-    Ilość - nr z czterema miejscami po przecinku: {{ctrl.amount | number:4}}
+    Amount - PLN currency: {{ctrl.amount | currency:'PLN'}}
   </li>
 
   <li>
-    Nazwisko bez filtrów: {{ctrl.name}}
+    Amount - number: {{ctrl.amount | number}}
   </li>
   <li>
-    Nazwisko - z filtrem lowercase: {{ctrl.name | lowercase}}
-  </li>
-  <li>
-    Nazwisko - z filtrem uppercase: {{ctrl.name | uppercase}}
+    Amount - 4 decimal places: {{ctrl.amount | number:4}}
   </li>
 
   <li>
-    Filtr JSON: {{ctrl.obj | json}}
+    Surname without filters: {{ctrl.name}}
+  </li>
+  <li>
+    Surname - lowercase: {{ctrl.name | lowercase}}
+  </li>
+  <li>
+    Surname - uppercase: {{ctrl.name | uppercase}}
   </li>
 
   <li>
-    Znacznik czasu: {{ctrl.startTime}}
+    Object without filters: <pre>{{ctrl.obj }}</pre>
   </li>
   <li>
-    Domyślny filtr daty: {{ctrl.startTime | date}}
+    Object in JSON format: <pre>{{ctrl.obj | json:4}}</pre>
+  </li>
+
+  <li>
+    Time without filters: {{ctrl.startTime}}
   </li>
   <li>
-    Filtr daty medium: {{ctrl.startTime | date:'medium'}}
+    Time default date filter: {{ctrl.startTime | date}}
   </li>
   <li>
-    Filtr daty zdefiniowany przez użytkownika: {{ctrl.startTime | date:'dd.MM.yyyy'}}
+    Time with date medium filter: {{ctrl.startTime | date:'medium'}}
+  </li>
+  <li>
+    Time with date custom filter: {{ctrl.startTime | date:'dd.MM.yyyy'}}
+  </li>
+  <li>
+    Time 'yesterday' with date custom filter: {{ctrl.yesterday | date:'dd.MM.yyyy'}}
   </li>
 </ul>
 
@@ -59,10 +64,14 @@
 <script type="text/javascript">
   angular.module('filtersApp', [])
     .controller('FilterCtrl', [function() {
-      this.amount = 1024;
-      this.name = 'Shyam Seshadri';
-      this.obj = {test: 'value', num: 123};
-      this.startTime = new Date().getTime();
+      var self = this;
+      self.amount = 1024;
+      self.name = 'Shyam Seshadri';
+      self.obj = {test: 'value', num: 123};
+      self.d = new Date();
+      self.startTime = self.d.getTime();
+      self.yesterday = self.d.setDate(self.d.getDate() - 1);
+
     }]);
 </script>
 </body>

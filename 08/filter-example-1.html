@@ -23,7 +23,7 @@
   </div>
 
   <div>
-    Surname lowercase: <strong>{{ ctrl.name | lowercase }}</strong>
+    Surname lowercase and string limited: <strong>{{ ctrl.name | lowercase | limitTo:5 }}</strong>
   </div>
 
   <div>
@@ -38,7 +38,7 @@
 <script type="text/javascript">
     angular.module('filtersApp',[])
       .controller('FilterCtrl', [function(){
-        self = this;
+        var self = this;
         self.amount = 1024;
         self.totalCost = 4906;
         self.name = 'Shyam Seshadri';
