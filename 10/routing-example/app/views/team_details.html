@@ -1,0 +1,52 @@
+<!-- Plik: r10/routing-example/app/views/team_details.html -->
+<div class="team-details-container card">
+  <div class="team-logo">
+      <img title="Obraz opublikowany dzięki uprzejmości: Wikipedii"
+           ng-src="{{teamDetailsCtrl.team.logoUrl}}">
+  </div>
+  <div class="name">
+      <span ng-bind="teamDetailsCtrl.team.name"></span>
+      (<span ng-bind="teamDetailsCtrl.team.fifaCode"></span>)
+  </div>
+  <div class="detail">
+    <div class="label">
+      <span>Ksywa</span>
+    </div>
+    <div class="title">
+      <span ng-bind="teamDetailsCtrl.team.nickname"></span>
+    </div>
+  </div>
+  <div class="detail">
+    <div class="label">
+      <span>Miejsce w rankingu FIFA</span>
+    </div>
+    <div class="title">
+      <span ng-bind="teamDetailsCtrl.team.fifaRanking">
+      </span>
+    </div>
+  </div>
+  <div class="detail">
+    <div class="label">
+      <span>Związek</span>
+    </div>
+    <div class="title">
+      <span ng-bind="teamDetailsCtrl.team.association"></span>
+    </div>
+  </div>
+  <div class="detail">
+    <div class="label">
+      <span>Trener</span>
+    </div>
+    <div class="title">
+      <span ng-bind="teamDetailsCtrl.team.headCoach"></span>
+    </div>
+  </div>
+  <div class="detail">
+    <div class="label">
+      <span>Kapitan</span>
+    </div>
+    <div class="title">
+      <span ng-bind="teamDetailsCtrl.team.captain"></span>
+    </div>
+  </div>
+</div>

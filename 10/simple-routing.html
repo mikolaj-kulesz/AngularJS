@@ -1,0 +1,37 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ngRoute - AngularJS</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-route.js"></script>
+</head>
+
+<body ng-app="routingApp">
+
+  <h2>App: ngRoute - AngularJS</h2>
+
+  <ul>
+    <li><a href="#/">Default route</a></li>
+    <li><a href="#/second">Secound route</a></li>
+    <li><a href="#/asdasdasd">Non-existing route</a></li>
+  </ul>
+
+  <div ng-view></div>
+
+  <script type="text/javascript">
+    angular.module('routingApp', ['ngRoute'])
+      .config(['$routeProvider',function($routeProvider) {
+        $routeProvider
+          .when('/', {
+            template: '<h5>Default route</h5>'
+          })
+          .when('/second', {
+            template: '<h5>Secound route</h5>'
+          })
+          .otherwise({redirectTo: '/'});
+      }]);
+  </script>
+</body>
+</html>
+
+
