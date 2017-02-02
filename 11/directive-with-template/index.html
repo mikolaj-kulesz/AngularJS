@@ -1,15 +1,15 @@
 <!-- Plik: r11/directive-with-template/index.html -->
 <html>
 <head>
-  <title>Aplikacja giełdowa</title>
+  <meta charset="utf-8">
+  <title>Stock app ( own directive to include )</title>
 </head>
 <body ng-app="stockMarketApp">
 
   <div ng-controller="MainCtrl as mainCtrl">
-    <h3>Lista towarów</h3>
+    <h3>Stock list</h3>
     <div ng-repeat="stock in mainCtrl.stocks">
-        <div stock-widget>
-        </div>
+        <div stock-widget></div>
     </div>
   </div>
 
