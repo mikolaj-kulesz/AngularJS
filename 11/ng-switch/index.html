@@ -1,0 +1,48 @@
+<!-- Plik: r11/ng-switch/index.html -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Aplikacja z przełącznikiem</title>
+</head>
+<body ng-app="switchApp">
+
+  <div ng-controller="MainCtrl as mainCtrl">
+    <h3>Warunkowe elementy w HTML</h3>
+    <button ng-click="mainCtrl.currentTab = 'tab1'">
+      Karta 1
+    </button>
+    <button ng-click="mainCtrl.currentTab = 'tab2'">
+      Karta 2
+    </button>
+    <button ng-click="mainCtrl.currentTab = 'tab3'">
+      Karta 3
+    </button>
+    <button ng-click="mainCtrl.currentTab = 'something'">
+      Domyślna karta
+    </button>
+
+    <div ng-switch="mainCtrl.currentTab">
+      <div ng-switch-when="tab1">
+        Wybrano kartę 1
+      </div>
+      <div ng-switch-when="tab2">
+        Wybrano kartę 2
+      </div>
+      <div ng-switch-when="tab3">
+        Wybrano kartę 3
+      </div>
+      <div ng-switch-default>
+        Nie wybrano żadnej znanej karty
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+  <script type="text/javascript">
+    angular.module('switchApp', [])
+        .controller('MainCtrl', [function() {
+          this.currentTab = 'tab1';
+        }]);
+  </script>
+</body>
+</html>

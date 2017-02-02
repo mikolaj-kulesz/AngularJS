@@ -1,0 +1,19 @@
+<!-- Plik: r11/directive-broken-reference/stock.html -->
+<div class="stock-dash">
+  Nazwa:
+  <span class="stock-name"
+        ng-bind="stockData.name">
+  </span>
+  Cena:
+  <span class="stock-price"
+        ng-bind="stockData.price | currency">
+  </span>
+  Zmiana procentowa:
+  <span class="stock-change"
+        ng-bind="getChange(stockData) + '%'">
+  </span>
+
+  <button ng-click="changeStock()">
+    Zmień towar w dyrektywie
+  </button>
+</div>
