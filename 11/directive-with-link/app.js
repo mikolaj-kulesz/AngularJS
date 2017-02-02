@@ -1,5 +1,3 @@
-// Plik: r11/directive-with-link/app.js
-
 angular.module('stockMarketApp', [])
   .controller('MainCtrl', [function() {
     var self = this;

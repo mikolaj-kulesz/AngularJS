@@ -1,14 +1,13 @@
-<!-- Plik: r11/directive-with-link/stock.html -->
 <div class="stock-dash">
-  Nazwa:
+  Name:
   <span class="stock-name"
         ng-bind="stock.name">
   </span>
-  Cena:
+  Price:
   <span class="stock-price"
         ng-bind="stock.price | currency">
   </span>
-  Zmiana procentowa:
+  Stock change:
   <span class="stock-change"
         ng-bind="getChange(stock) + '%'">
   </span>
