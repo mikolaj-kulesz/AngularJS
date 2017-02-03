@@ -1,4 +1,3 @@
-<!-- Plik: r11/directive-with-scope-advanced/stock.html -->
 <div class="stock-dash">
   Nazwa:
   <span class="stock-name"
@@ -6,11 +5,15 @@
   </span>
   Cena:
   <span class="stock-price"
-        ng-bind="stockData.price | currency">
+        ng-bind="stockDataStocks.price | currency">
   </span>
   Zmiana procentowa:
   <span class="stock-change"
-        ng-bind="getChange(stockData) + '%'">
+        ng-bind="getChange(stockDataStocks) + '%'">
   </span>
-  <button ng-click="onSelect()">Wybierz mnie</button>
+
+<!--   <button ng-click="onSelect()"> -->
+  <button ng-click="onSelect(stockDataStocks)">
+    Wybierz mnie
+  </button>
 </div>
