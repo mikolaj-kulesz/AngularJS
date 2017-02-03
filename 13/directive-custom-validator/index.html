@@ -1,0 +1,39 @@
+<!-- Plik: r13/directive-custom-validator/index.html -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Aplikacja giełdowa</title>
+  <style>
+    input.ng-invalid {
+      background: pink;
+    }
+  </style>
+</head>
+<body ng-app="stockMarketApp">
+
+  <div ng-controller="MainCtrl as mainCtrl">
+    <h3>Wpisywanie kodu pocztowego</h3>
+    <h5>Kod pocztowy może być wpisany w jednym z trzech formatów:</h5>
+    <ul>
+      <li>12345</li>
+      <li>12345 1234</li>
+      <li>12345-1234</li>
+    </ul>
+    <form novalidate name="zipForm">
+      Wpisz prawidłowy kod pocztowy:
+      <input type="text"
+             name="zipField"
+             ng-model="mainCtrl.zip"
+             valid-zip>
+      <div ng-show="zipForm.zipField.$error.zip">Wpisano nieprawidłowy kod pocztowy</div>
+
+    </form>
+  </div>
+
+<script
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js">
+</script>
+<script src="app.js"></script>
+<script src="directive.js"></script>
+</body>
+</html>

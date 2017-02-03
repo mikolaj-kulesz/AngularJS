@@ -1,0 +1,51 @@
+<!-- Plik: r13/directive-compile/index.html -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Aplikacja z dynamicznym formularzem</title>
+</head>
+<body ng-app="dynamicFormApp">
+
+  <div ng-controller="MainCtrl as mainCtrl">
+    <form novalidate name="mainForm">
+      <form-element type="text"
+                    name="uname"
+                    bind-to="mainCtrl.username"
+                    label="Nazwa użytkownika"
+                    required
+                    ng-minlength="5">
+        <validation key="required">
+          Wpisz nazwę użytkownika
+        </validation>
+        <validation key="minlength">
+          Nazwa użytkownika musi zawierać przynajmniej pięć liter.
+        </validation>
+      </form-element>
+
+      Nazwa użytkownika: {{mainCtrl.username}}
+
+      <form-element type="password"
+                    name="pwd"
+                    bind-to="mainCtrl.password"
+                    label="Hasło"
+                    required
+                    ng-pattern="/^[a-zA-Z0-9]+$/">
+        <validation key="required">
+          Wpisz hasło
+        </validation>
+        <validation key="pattern">
+          Hasło może zawierać tylko cyfry i litery.
+        </validation>
+      </form-element>
+      Hasło: {{mainCtrl.password}}
+
+      <button>Wyślij</button>
+    </form>
+
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="directive.js"></script>
+</body>
+</html>

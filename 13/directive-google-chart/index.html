@@ -1,0 +1,27 @@
+<!-- Plik: r13/directive-google-chart/index.html -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Aplikacja z wykresami Google</title>
+</head>
+<body ng-app="googleChartApp">
+
+  <div ng-controller="MainCtrl as mainCtrl">
+    <div>
+      <button ng-click="mainCtrl.changeData()">
+        Zmień dane wykresu
+      </button>
+    </div>
+    <div pie-chart
+         chart-data="mainCtrl.pieChartData"
+         chart-config="mainCtrl.pieChartConfig">
+    </div>
+  </div>
+
+  <script src="http://www.google.com/jsapi"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="googleChartLoader.js"></script>
+  <script src="pieChart.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!-- Plik: r13/directive-controllers/index.html -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Aplikacja giełdowa</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body ng-app="stockMarketApp">
+
+  <div ng-controller="MainCtrl as mainCtrl">
+    <tabs>
+      <tab title="Pierwsza karta">
+        To jest pierwsza karta.
+        Data włączenia aplikacji: {{mainCtrl.startedTime | date}}
+      </tab>
+      <tab title="Druga karta">
+        To jest druga karta
+        <div ng-repeat="stock in mainCtrl.stocks">
+          Nazwa towaru: {{stock.name}}
+        </div>
+      </tab>
+    </tabs>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="tabs.js"></script>
+  <script src="tab.js"></script>
+</body>
+</html>
