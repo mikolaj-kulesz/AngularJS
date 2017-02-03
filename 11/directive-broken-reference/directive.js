@@ -1,4 +1,3 @@
-// Plik: r11/directive-broken-reference/directive.js
 angular.module('stockMarketApp')
   .directive('stockWidget', [function() {
     return {

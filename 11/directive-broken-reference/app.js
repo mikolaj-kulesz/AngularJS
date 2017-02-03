@@ -1,5 +1,3 @@
-// Plik: r11/directive-broken-reference/app.js
-
 angular.module('stockMarketApp', [])
   .controller('MainCtrl', [function() {
     var self = this;
@@ -10,14 +8,13 @@ angular.module('stockMarketApp', [])
     self.changeAllStocks = function() {
       for (var i = 0; i < 4; i++) {
         self.stocks[i] = {
-          name: 'Towar kontrolera',
+          name: 'Towar z kontrolera',
           price: 200,
           previous: 250
         };
       }
     };
-
     self.changeFirstStock = function() {
-      self.stocks[0].name = 'Zmieniono pierwszy towar';
+      self.stocks[0].name = 'Zmieniono pierwszy towar z kontrolera';
     };
   }]);
