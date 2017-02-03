@@ -1,13 +1,18 @@
-<!-- Plik: r13/directive-transclusion/stock.html -->
 <div class="stock-dash">
-  <span ng-transclude></span>
-
-  Cena:
-  <span class="stock-price"
-        ng-bind="stockData.price | currency">
-  </span>
-  Zmiana procentowa:
-  <span class="stock-change"
-        ng-bind="getChange(stockData) + '%'">
-  </span>
+  <p ng-transclude></p>
+  <p>Nazwa:
+    <span class="stock-name"
+          ng-bind="stockData.name">
+    </span>
+    <br>Cena:
+    <span class="stock-price"
+          ng-bind="stockData.price | currency">
+    </span>
+    <br>Zmiana procentowa:
+    <span class="stock-change"
+          ng-bind="getChange(stockData) + '%'">
+    </span>
+  </p>
+  <br>
+  <br>
 </div>

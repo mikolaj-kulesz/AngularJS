@@ -1,5 +1,3 @@
-// Plik: r13/directive-transclusion/app.js
-
 angular.module('stockMarketApp', [])
   .controller('MainCtrl', [function() {
     var self = this;
