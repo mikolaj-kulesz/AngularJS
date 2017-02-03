@@ -7,7 +7,7 @@
 
   <div ng-controller="MainCtrl as mainCtrl">
     <h3>Lista towarów</h3>
-    <div simple-stock-repeat="mainCtrl.stocks">
+    <div simple-stock-repeat stock-data="mainCtrl.stocks">
       Znaleziono towar "{{stock.name}}" pod indeksem - {{currentIndex}}
     </div>
   </div>

@@ -4,7 +4,9 @@ angular.module('stockMarketApp')
       // name: '',
       // priority: 1,
       // terminal: true,
-      // scope: {}, // {} = isolate, true = child, false/undefined = no change
+      scope: {
+        stockData: '='
+      }, // {} = isolate, true = child, false/undefined = no change
       // controller: function($scope, $element, $attrs, $transclude) {},
       // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
       restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
@@ -15,8 +17,10 @@ angular.module('stockMarketApp')
       // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
       link: function($scope, $element, $attrs, ctrl, $transclude) {
 
-        var myArr = $scope.$eval($attrs.simpleStockRepeat);
+        var myArr = $scope.stockData;
         var container = angular.element('<div class="contaner"></div>');
+
+        console.log(myArr);
 
         for (var i = 0; i < myArr.length; i++) {
           var instance = $transclude($scope.$new(), function(clonedEl, newScope){
