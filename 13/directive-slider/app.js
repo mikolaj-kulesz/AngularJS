@@ -1,14 +1,15 @@
-// Plik: r13/directive-slider/app.js
-
 angular.module('sliderApp', [])
   .controller('MainCtrl', [function() {
     var self = this;
 
-    self.selectedValue = 2000;
+    self.selectedValue = 0;
 
-    self.textValue = 4000;
+    self.textValue = 30;
 
     self.setSelectedValue = function() {
-      self.selectedValue = self.textValue;
+      self.selectedValue = self.selectedValue + 20;
+      console.log(self.selectedValue);
     };
+
+    self.setSelectedValue();
   }]);

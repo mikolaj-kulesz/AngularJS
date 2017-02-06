@@ -1,4 +1,3 @@
-<!-- Plik: r13/directive-slider/index.html -->
 <html>
 <head>
   <meta charset="utf-8">
@@ -21,17 +20,17 @@
     </div>
 
     <no-ui-slider class="slider"
-                 ng-model="mainCtrl.selectedValue"
-                 range-min="500"
-                 range-max="5000">
+                  ng-model="mainCtrl.selectedValue"
+                  range-min="0"
+                  range-max="100">
 
     </no-ui-slider>
 
     <div>
       <input type="number"
-             ng-model="mainCtrl.textValue"
-             min="500"
-             max="5000"
+             ng-model="mainCtrl.selectedValue"
+             min="0"
+             max="100"
              placeholder="Ustaw wartość">
       <button ng-click="mainCtrl.setSelectedValue()">
         Ustaw wartość paska przewijania
